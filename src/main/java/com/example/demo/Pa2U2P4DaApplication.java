@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,13 +20,18 @@ import com.example.demo.repository.modelo.Estudiante;
 import com.example.demo.repository.modelo.Libro;
 import com.example.demo.repository.modelo.Materia;
 import com.example.demo.repository.modelo.Matricula;
+import com.example.demo.repository.modelo.Veterinaria;
 import com.example.demo.service.AnimalService;
 import com.example.demo.service.AutorService;
 import com.example.demo.service.EstudianteService;
 import com.example.demo.service.MatriculaService;
+import com.example.demo.service.VeterinariaService;
 
 @SpringBootApplication
 public class Pa2U2P4DaApplication implements CommandLineRunner {
+
+	@Autowired
+	VeterinariaService veterinariaService;
 
 	@Autowired
 	AnimalService animalService;
@@ -37,38 +44,58 @@ public class Pa2U2P4DaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
+		Veterinaria veterinaria = new Veterinaria();
 		Animal animal = new Animal();
-		animal.setNombre("Misi");
-		animal.setTipo("Gato");
+
+		animal.setFechaNacimiento(LocalDate.of(2013, 11, 13));
+		animal.setNombre("Scott");
+		animal.setPeso(14.5);
+		animal.setRaza("Mestizo");
+		animal.setTipo("Perro");
+
+		Animal animal1 = new Animal();
+
+		animal1.setFechaNacimiento(LocalDate.of(2012, 07, 15));
+		animal1.setNombre("Luna");
+		animal1.setPeso(13.5);
+		animal1.setRaza("Mestizo");
+		animal1.setTipo("Perro");
 
 		Animal animal2 = new Animal();
-		animal2.setNombre("Sirius");
-		animal2.setTipo("Perro");
+
+		animal2.setFechaNacimiento(LocalDate.of(2022, 06, 21));
+		animal2.setNombre("Manchos");
+		animal2.setPeso(3.6);
+		animal2.setRaza("Mestizo");
+		animal2.setTipo("Gato");
 
 		Animal animal3 = new Animal();
+
+		animal3.setFechaNacimiento(LocalDate.of(2022, 06, 21));
 		animal3.setNombre("Ceni");
+		animal3.setPeso(3.4);
+		animal3.setRaza("Mestizo");
 		animal3.setTipo("Gato");
 
-		Animal animal4 = new Animal();
-		animal4.setNombre("Scott");
-		animal4.setTipo("Perro");
+		List<Animal> animales = new ArrayList<>();
+		animales.add(animal);
+		animales.add(animal1);
+		animales.add(animal2);
+		animales.add(animal3);
 
-		this.animalService.buscarPorNombre("Misi");
+		veterinaria.setTlfno("2938576");
+		veterinaria.setTipoConsulta("Control");
+		veterinaria.setPrecioConsulta(new BigDecimal(15));
+		veterinaria.setNombre("Veterinaria La Planada");
+		veterinaria.setDireccion("Colinas del norte");
+		veterinaria.setAnimales(animales);
 
-		List<Animal> reporte = this.animalService.buscarListaPorTipo("Gato");
-		System.out.println("Reporte de todos los gatos ");
-		for (Animal animal0 : reporte) {
-			System.out.println(animal0);
-		}
+		animal.setVeterinaria(veterinaria);
 
-		this.animalService.buscarPorNombre("Sirius");
+		// veterinariaService.guardar(veterinaria);
 
-		List<Animal> reporte2 = this.animalService.buscarListaPorTipo("Perro");
-		System.out.println("Reporte de todos los perros ");
-		for (Animal animal5 : reporte2) {
-			System.out.println(animal5);
-		}
+		List<Animal> animal5 = this.animalService.seleccionarAnimalDinamico("Ceni", "Gato", LocalDate.now());
 
+		System.out.println(animal5);
 	}
-
 }

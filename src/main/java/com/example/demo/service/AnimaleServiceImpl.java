@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,11 @@ public class AnimaleServiceImpl implements AnimalService {
 	@Override
 	public List<Animal> buscarListaPorTipoTyped(String tipo) {
 		return this.animalRepository.seleccionarListaPorTipoTyped(tipo);
+	}
+
+	@Override
+	public List<Animal> seleccionarAnimalDinamico(String nombre, String tipo, LocalDate fecha) {
+		return this.animalRepository.seleccionarAnimalDinamico(nombre, tipo, fecha);
 	}
 
 }

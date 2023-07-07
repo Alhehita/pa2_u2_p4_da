@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -10,6 +11,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -57,6 +62,34 @@ public class AnimalRepositoryImpl implements AnimalRepository {
 				Animal.class);
 		query.setParameter("datoTipo", tipo);
 		return query.getResultList();
+	}
+
+	@Override
+	public List<Animal> seleccionarAnimalDinamico(String nombre, String tipo, LocalDate fecha) {
+
+		CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
+
+		CriteriaQuery<Animal> criteriaQuery = builder.createQuery(Animal.class);
+
+		Root<Animal> miTablaFrom = criteriaQuery.from(Animal.class);
+
+		Predicate pNombre = builder.equal(miTablaFrom.get("nombre"), nombre);
+
+		Predicate pTipo = builder.equal(miTablaFrom.get("tipo"), tipo);
+
+		Predicate predicadoFinal = null;
+		LocalDate fechaComparacion = LocalDate.of(2015, 01, 01);
+		if (fecha.compareTo(fechaComparacion) > 0) {
+			predicadoFinal = builder.or(pNombre, pTipo);
+		} else {
+			predicadoFinal = builder.and(pNombre, pTipo);
+		}
+
+		criteriaQuery.select(miTablaFrom).where(predicadoFinal);
+
+		TypedQuery<Animal> queryFinal = this.entityManager.createQuery(criteriaQuery);
+
+		return queryFinal.getResultList();
 	}
 
 }

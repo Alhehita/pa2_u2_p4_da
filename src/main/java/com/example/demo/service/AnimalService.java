@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.example.demo.repository.modelo.Animal;
@@ -17,5 +18,7 @@ public interface AnimalService {
 	public Animal buscarPorNombreTyped(String nombre);
 
 	public List<Animal> buscarListaPorTipoTyped(String tipo);
+	
+	public List<Animal> seleccionarAnimalDinamico(String nombre, String tipo, LocalDate fecha) ;
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.example.demo.repository.modelo.Animal;
@@ -17,6 +18,8 @@ public interface AnimalRepository {
 	public Animal seleccionarPorNombreTyped(String nombre);
 	
 	public List<Animal> seleccionarListaPorTipoTyped(String tipo);
+	
+	public List<Animal> seleccionarAnimalDinamico(String nombre, String tipo, LocalDate fecha);
 
 	
 	
