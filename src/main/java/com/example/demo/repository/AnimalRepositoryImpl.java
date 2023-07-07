@@ -92,4 +92,21 @@ public class AnimalRepositoryImpl implements AnimalRepository {
 		return queryFinal.getResultList();
 	}
 
+	@Override
+	public int eliminarAnimalPorN(String nombre) {
+		Query query = this.entityManager.createQuery("DELETE FROM Animal a WHERE a.nombre = :datoNombre");
+		query.setParameter("datoNombre", nombre);
+		
+		return query.executeUpdate();
+	}
+
+	@Override
+	public int actualizarPorPeso(Double peso, String nombre) {
+		Query query = this.entityManager.createQuery("UPDATE Animal a SET a.nombre= :datoNombre WHERE a.peso= :datoPeso");
+		query.setParameter("datoNombre", nombre);
+		query.setParameter("datoPeso", peso);
+		
+		return query.executeUpdate();
+	}
+
 }

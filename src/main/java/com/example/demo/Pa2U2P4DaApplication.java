@@ -94,8 +94,14 @@ public class Pa2U2P4DaApplication implements CommandLineRunner {
 
 		// veterinariaService.guardar(veterinaria);
 
-		List<Animal> animal5 = this.animalService.seleccionarAnimalDinamico("Ceni", "Gato", LocalDate.now());
+		//List<Animal> animal5 = this.animalService.seleccionarAnimalDinamico("Ceni", "Gato", LocalDate.now());
 
-		System.out.println(animal5);
+		int borrar = animalService.borrarAnimalPorN("Ceni");
+		
+		System.out.println(borrar);
+		
+		int actualizar = animalService.actualizarPorPeso(15.8, "Scott");
+		
+		System.out.println(actualizar);
 	}
 }

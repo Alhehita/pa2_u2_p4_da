@@ -50,4 +50,14 @@ public class AnimaleServiceImpl implements AnimalService {
 		return this.animalRepository.seleccionarAnimalDinamico(nombre, tipo, fecha);
 	}
 
+	@Override
+	public int borrarAnimalPorN(String nombre) {
+		return this.animalRepository.eliminarAnimalPorN(nombre);
+	}
+
+	@Override
+	public int actualizarPorPeso(Double peso, String nombre) {
+		return this.animalRepository.actualizarPorPeso(peso, nombre);
+	}
+
 }

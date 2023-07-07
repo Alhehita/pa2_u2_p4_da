@@ -21,4 +21,7 @@ public interface AnimalService {
 	
 	public List<Animal> seleccionarAnimalDinamico(String nombre, String tipo, LocalDate fecha) ;
 
+	public int borrarAnimalPorN(String nombre);
+	
+	public int actualizarPorPeso(Double peso,  String nombre);
 }
