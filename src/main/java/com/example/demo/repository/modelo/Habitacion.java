@@ -67,4 +67,12 @@ public class Habitacion {
 		this.hotel = hotel;
 	}
 
+	@Override
+	public String toString() {
+		return "Habitacion [id=" + id + ", numeroHab=" + numeroHab + ", valor=" + valor + ", hotel=" + hotel + "]";
+	}
+
+
+
 }
+

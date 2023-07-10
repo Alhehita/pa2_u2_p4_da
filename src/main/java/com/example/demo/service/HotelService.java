@@ -12,6 +12,5 @@ public interface HotelService {
 
 	public void actualizar(Hotel hotel);
 	
-	public Hotel buscarPorIdNombre(Integer id);
 
 }

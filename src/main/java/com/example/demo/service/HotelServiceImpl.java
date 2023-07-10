@@ -33,9 +33,5 @@ public class HotelServiceImpl implements HotelService {
 		this.hotelRepository.actualizar(hotel);
 	}
 
-	@Override
-	public Hotel buscarPorIdNombre(Integer id) {
-		return this.hotelRepository.seleccionarPorIdNombre(id);
-	}
 
 }

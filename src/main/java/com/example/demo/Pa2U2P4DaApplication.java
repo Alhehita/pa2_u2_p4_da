@@ -26,6 +26,7 @@ import com.example.demo.repository.modelo.Veterinaria;
 import com.example.demo.service.AnimalService;
 import com.example.demo.service.AutorService;
 import com.example.demo.service.EstudianteService;
+import com.example.demo.service.HabitacionService;
 import com.example.demo.service.HotelService;
 import com.example.demo.service.MatriculaService;
 import com.example.demo.service.VeterinariaService;
@@ -41,6 +42,9 @@ public class Pa2U2P4DaApplication implements CommandLineRunner {
 
 	@Autowired
 	HotelService hotelService;
+
+	@Autowired
+	HabitacionService habitacionService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4DaApplication.class, args);
@@ -84,10 +88,18 @@ public class Pa2U2P4DaApplication implements CommandLineRunner {
 		hotel.setHabitaciones(habitaciones);
 
 		// this.hotelService.guardar(hotel);
-		// this.hotelService.buscarPorIdNombre(2);
 
-		System.out.println(this.matriculaService.buscarTodosPorFecha());
-		
+		Hotel consulta = this.hotelService.buscar(2);
+		System.out.println(hotel.getNombre());
+
+		consulta.getHabitaciones();
+
+		for (Habitacion habitacion5 : consulta.getHabitaciones()) {
+			System.out.println("Reporte" + habitacion5.getId());
+
+		}
+
+//		System.out.println(this.matriculaService.buscarTodosPorFecha());
 
 	}
 }

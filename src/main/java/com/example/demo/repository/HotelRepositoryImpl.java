@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.Hotel;
@@ -24,7 +26,9 @@ public class HotelRepositoryImpl implements HotelRepository {
 	@Override
 	public Hotel seleccionar(Integer id) {
 		// TODO Auto- method stub
-		return this.entityManager.find(Hotel.class, id);
+	//	Hotel hotel = new Hotel();
+		//hotel.getHabitaciones().size();
+		return this.entityManager.find(Hotel.class, id.SIZE);
 	}
 
 	@Override
@@ -38,13 +42,8 @@ public class HotelRepositoryImpl implements HotelRepository {
 		this.entityManager.merge(hotel);
 	}
 
-	@Override
-	public Hotel seleccionarPorIdNombre(Integer id) {
-		Hotel hotel =this.seleccionar(id);
-		
-	TypedQuery<Hotel> query = this.entityManager.createQuery("SELECT h.nombre FROM Hotel h WHERE h.id = :datoId", Hotel.class);
-	query.setParameter("datoId", id);
-	return query.getSingleResult();
-	}
+	
+
+	
 
 }
