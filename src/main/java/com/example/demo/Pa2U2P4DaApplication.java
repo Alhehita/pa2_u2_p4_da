@@ -17,6 +17,8 @@ import com.example.demo.repository.modelo.Alumno;
 import com.example.demo.repository.modelo.Animal;
 import com.example.demo.repository.modelo.Autor;
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.Habitacion;
+import com.example.demo.repository.modelo.Hotel;
 import com.example.demo.repository.modelo.Libro;
 import com.example.demo.repository.modelo.Materia;
 import com.example.demo.repository.modelo.Matricula;
@@ -24,6 +26,7 @@ import com.example.demo.repository.modelo.Veterinaria;
 import com.example.demo.service.AnimalService;
 import com.example.demo.service.AutorService;
 import com.example.demo.service.EstudianteService;
+import com.example.demo.service.HotelService;
 import com.example.demo.service.MatriculaService;
 import com.example.demo.service.VeterinariaService;
 
@@ -31,10 +34,13 @@ import com.example.demo.service.VeterinariaService;
 public class Pa2U2P4DaApplication implements CommandLineRunner {
 
 	@Autowired
-	VeterinariaService veterinariaService;
+	EstudianteService estudianteService;
 
 	@Autowired
-	AnimalService animalService;
+	MatriculaService matriculaService;
+
+	@Autowired
+	HotelService hotelService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4DaApplication.class, args);
@@ -44,64 +50,44 @@ public class Pa2U2P4DaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Veterinaria veterinaria = new Veterinaria();
-		Animal animal = new Animal();
+		// System.out.println(this.matriculaService.buscarTodos());
 
-		animal.setFechaNacimiento(LocalDate.of(2013, 11, 13));
-		animal.setNombre("Scott");
-		animal.setPeso(14.5);
-		animal.setRaza("Mestizo");
-		animal.setTipo("Perro");
+		Hotel hotel = new Hotel();
 
-		Animal animal1 = new Animal();
+		hotel.setDireccion("Av. Naciones Unidas");
 
-		animal1.setFechaNacimiento(LocalDate.of(2012, 07, 15));
-		animal1.setNombre("Luna");
-		animal1.setPeso(13.5);
-		animal1.setRaza("Mestizo");
-		animal1.setTipo("Perro");
+		hotel.setNombre("Hotel Plaza 1");
 
-		Animal animal2 = new Animal();
+		Habitacion habitacion = new Habitacion();
 
-		animal2.setFechaNacimiento(LocalDate.of(2022, 06, 21));
-		animal2.setNombre("Manchos");
-		animal2.setPeso(3.6);
-		animal2.setRaza("Mestizo");
-		animal2.setTipo("Gato");
+		habitacion.setHotel(hotel);
+		habitacion.setNumeroHab("34");
+		habitacion.setValor(new BigDecimal(45));
 
-		Animal animal3 = new Animal();
+		Habitacion habitacion1 = new Habitacion();
 
-		animal3.setFechaNacimiento(LocalDate.of(2022, 06, 21));
-		animal3.setNombre("Ceni");
-		animal3.setPeso(3.4);
-		animal3.setRaza("Mestizo");
-		animal3.setTipo("Gato");
+		habitacion1.setHotel(hotel);
+		habitacion1.setNumeroHab("37");
+		habitacion1.setValor(new BigDecimal(48));
 
-		List<Animal> animales = new ArrayList<>();
-		animales.add(animal);
-		animales.add(animal1);
-		animales.add(animal2);
-		animales.add(animal3);
+		Habitacion habitacion2 = new Habitacion();
 
-		veterinaria.setTlfno("2938576");
-		veterinaria.setTipoConsulta("Control");
-		veterinaria.setPrecioConsulta(new BigDecimal(15));
-		veterinaria.setNombre("Veterinaria La Planada");
-		veterinaria.setDireccion("Colinas del norte");
-		veterinaria.setAnimales(animales);
+		habitacion2.setHotel(hotel);
+		habitacion2.setNumeroHab("54");
+		habitacion2.setValor(new BigDecimal(59));
 
-		animal.setVeterinaria(veterinaria);
+		List<Habitacion> habitaciones = new ArrayList<>();
+		habitaciones.add(habitacion);
+		habitaciones.add(habitacion1);
+		habitaciones.add(habitacion2);
 
-		// veterinariaService.guardar(veterinaria);
+		hotel.setHabitaciones(habitaciones);
 
-		//List<Animal> animal5 = this.animalService.seleccionarAnimalDinamico("Ceni", "Gato", LocalDate.now());
+		// this.hotelService.guardar(hotel);
+		// this.hotelService.buscarPorIdNombre(2);
 
-		int borrar = animalService.borrarAnimalPorN("Ceni");
+		System.out.println(this.matriculaService.buscarTodosPorFecha());
 		
-		System.out.println(borrar);
-		
-		int actualizar = animalService.actualizarPorPeso(15.8, "Scott");
-		
-		System.out.println(actualizar);
+
 	}
 }

@@ -2,36 +2,40 @@ package com.example.demo.repository.modelo;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "hotel")
+
+@NamedQuery(name="Hotel.buscarPorId",
+query="SELECT h.nombre FROM Hotel h WHERE h.id = :datoId")
 public class Hotel {
-	
+
 	@GeneratedValue(generator = "seq_hotel", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "seq_hotel", sequenceName = "seq_hotel", allocationSize = 1)
 	@Id
 	@Column(name = "hote_id")
 	private Integer id;
-	
+
 	@Column(name = "hote_nombre")
 	private String nombre;
-	
+
 	@Column(name = "hote_direccion")
 	private String direccion;
 
-	@OneToMany(mappedBy = "hotel")
+	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
 	private List<Habitacion> habitaciones;
 
-	
-	//Get and Set
+	// Get and Set
 	public Integer getId() {
 		return id;
 	}
@@ -63,7 +67,5 @@ public class Hotel {
 	public void setHabitaciones(List<Habitacion> habitaciones) {
 		this.habitaciones = habitaciones;
 	}
-	
-	
-}
 
+}

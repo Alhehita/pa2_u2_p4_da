@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import java.util.List;
 
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.dto.EstudianteDTO;
 
 public interface EstudianteRepository {
 
@@ -40,4 +41,8 @@ public interface EstudianteRepository {
 	public Estudiante seleccionarPorNombreNativeQueryNamed(String nombre);
 
 	public Estudiante seleccionarPorApellidoCriteriaAPIQuery(String apellido);
+
+	
+	public List<EstudianteDTO> seleccionarTodosDTO();
+
 }

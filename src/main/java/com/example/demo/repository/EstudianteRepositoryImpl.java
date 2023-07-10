@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.dto.EstudianteDTO;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -141,18 +142,26 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 	public Estudiante seleccionarPorApellidoCriteriaAPIQuery(String apellido) {
 
 		CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
-		
+
 		CriteriaQuery<Estudiante> criteriaQuery = builder.createQuery(Estudiante.class);
-		
+
 		Root<Estudiante> miTablaFrom = criteriaQuery.from(Estudiante.class);
-		
-		Predicate condicionApellido = builder.equal(miTablaFrom.get("apellido"),apellido);
-		
+
+		Predicate condicionApellido = builder.equal(miTablaFrom.get("apellido"), apellido);
+
 		criteriaQuery.select(miTablaFrom).where(condicionApellido);
-		
+
 		TypedQuery<Estudiante> queryFinal = this.entityManager.createQuery(criteriaQuery);
-		
+
 		return queryFinal.getSingleResult();
+	}
+
+	@Override
+	public List<EstudianteDTO> seleccionarTodosDTO() {
+		TypedQuery<EstudianteDTO> query = this.entityManager.createQuery(
+				"SELECT NEW com.example.demo.repository.modelo.dto.EstudianteDTO(e.nombre, e.apellido) FROM Estudiante e",
+				EstudianteDTO.class);
+		return query.getResultList();
 	}
 
 }
