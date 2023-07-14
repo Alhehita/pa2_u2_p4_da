@@ -97,6 +97,12 @@ public class Veterinaria {
 	public void setPrecioConsulta(BigDecimal precioConsulta) {
 		this.precioConsulta = precioConsulta;
 	}
+
+	@Override
+	public String toString() {
+		return "Veterinaria [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", tlfno=" + tlfno
+				+ ", tipoConsulta=" + tipoConsulta + ", precioConsulta=" + precioConsulta + "]";
+	}
 	
 	
 	

@@ -11,6 +11,21 @@ public interface VeterinariaRepository {
 
 	public void actualizar(String nombre);
 	
+	public List<Veterinaria> seleccionarVetJoin();
+	public List<Animal> seleccionarAnimJoin();
+	
+	public List<Veterinaria> seleccionarVetRightJoin();
+	public List<Animal> seleccionarAnimRightJoin();
+	
+	public List<Veterinaria> seleccionarVetLeftJoin();
+	public List<Animal> seleccionarAnimLeftJoin();
+	
+	public List<Veterinaria> seleccionarVetFullJoin();
+	public List<Animal> seleccionarAnimFullJoin();
+	
+	public List<Veterinaria> seleccionarVetWhereJoin();
+	public List<Animal> seleccionarAnimWhereJoin();
+
 	
 
 

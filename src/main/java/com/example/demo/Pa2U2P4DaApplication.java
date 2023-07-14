@@ -1,34 +1,15 @@
 package com.example.demo;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.repository.modelo.Alumno;
 import com.example.demo.repository.modelo.Animal;
-import com.example.demo.repository.modelo.Autor;
-import com.example.demo.repository.modelo.Estudiante;
-import com.example.demo.repository.modelo.Habitacion;
-import com.example.demo.repository.modelo.Hotel;
-import com.example.demo.repository.modelo.Libro;
-import com.example.demo.repository.modelo.Materia;
-import com.example.demo.repository.modelo.Matricula;
 import com.example.demo.repository.modelo.Veterinaria;
-import com.example.demo.service.AnimalService;
-import com.example.demo.service.AutorService;
 import com.example.demo.service.EstudianteService;
-import com.example.demo.service.HabitacionService;
-import com.example.demo.service.HotelService;
-import com.example.demo.service.MatriculaService;
 import com.example.demo.service.VeterinariaService;
 
 @SpringBootApplication
@@ -38,13 +19,7 @@ public class Pa2U2P4DaApplication implements CommandLineRunner {
 	EstudianteService estudianteService;
 
 	@Autowired
-	MatriculaService matriculaService;
-
-	@Autowired
-	HotelService hotelService;
-
-	@Autowired
-	HabitacionService habitacionService;
+	VeterinariaService veterinariaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U2P4DaApplication.class, args);
@@ -54,52 +29,59 @@ public class Pa2U2P4DaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		// System.out.println(this.matriculaService.buscarTodos());
+		
+	List<Veterinaria> vet1 = this.veterinariaService.buscarVetJoin();
+	List<Veterinaria> vet2 = this.veterinariaService.buscarVetRightJoin();
+	List<Veterinaria> vet3 = this.veterinariaService.buscarVetLeftJoin();
+	List<Veterinaria> vet4 = this.veterinariaService.buscarVetFullJoin();
+	List<Veterinaria> vet5 = this.veterinariaService.buscarVetWhereJoin();
 
-		Hotel hotel = new Hotel();
+	for(Veterinaria vet10 : vet1) {
+		System.out.println(vet10);
+	}
+	
+	for(Veterinaria vet10 : vet2) {
+		System.out.println(vet10);
+	}
+	
+	for(Veterinaria vet10 : vet3) {
+		System.out.println(vet10);
+	}
+	
+	for(Veterinaria vet10 : vet4) {
+		System.out.println(vet10);
+	}
+	
+	for(Veterinaria vet10 : vet5) {
+		System.out.println(vet10);
+	}
+	
+	List<Animal> anim1 = this.veterinariaService.buscarAnimJoin();
+	List<Animal> anim2 = this.veterinariaService.buscarAnimRightJoin();
+	List<Animal> anim3 = this.veterinariaService.buscarAnimLeftJoin();
+	List<Animal> anim4 = this.veterinariaService.buscarAnimFullJoin();
+	List<Animal> anim5 = this.veterinariaService.buscarAnimWhereJoin();
 
-		hotel.setDireccion("Av. Naciones Unidas");
-
-		hotel.setNombre("Hotel Plaza 1");
-
-		Habitacion habitacion = new Habitacion();
-
-		habitacion.setHotel(hotel);
-		habitacion.setNumeroHab("34");
-		habitacion.setValor(new BigDecimal(45));
-
-		Habitacion habitacion1 = new Habitacion();
-
-		habitacion1.setHotel(hotel);
-		habitacion1.setNumeroHab("37");
-		habitacion1.setValor(new BigDecimal(48));
-
-		Habitacion habitacion2 = new Habitacion();
-
-		habitacion2.setHotel(hotel);
-		habitacion2.setNumeroHab("54");
-		habitacion2.setValor(new BigDecimal(59));
-
-		List<Habitacion> habitaciones = new ArrayList<>();
-		habitaciones.add(habitacion);
-		habitaciones.add(habitacion1);
-		habitaciones.add(habitacion2);
-
-		hotel.setHabitaciones(habitaciones);
-
-		// this.hotelService.guardar(hotel);
-
-		Hotel consulta = this.hotelService.buscar(2);
-		System.out.println(hotel.getNombre());
-
-		consulta.getHabitaciones();
-
-		for (Habitacion habitacion5 : consulta.getHabitaciones()) {
-			System.out.println("Reporte" + habitacion5.getId());
-
-		}
-
-//		System.out.println(this.matriculaService.buscarTodosPorFecha());
-
+	for(Animal anim10 : anim1) {
+		System.out.println(anim10);
+	}
+	
+	for(Animal anim10 : anim2) {
+		System.out.println(anim10);
+	}
+	
+	for(Animal anim10 : anim3) {
+		System.out.println(anim10);
+	}
+	
+	for(Animal anim10 : anim4) {
+		System.out.println(anim10);
+	}
+	
+	for(Animal anim10 : anim5) {
+		System.out.println(anim10);
+	}
+	
+	
 	}
 }
