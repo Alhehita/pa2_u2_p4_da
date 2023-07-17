@@ -26,7 +26,7 @@ public interface VeterinariaRepository {
 	public List<Veterinaria> seleccionarVetWhereJoin();
 	public List<Animal> seleccionarAnimWhereJoin();
 
-	
+	public List<Veterinaria> seleccionarVetFetchJoin();
 
 
 }

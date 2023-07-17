@@ -25,5 +25,7 @@ public interface VeterinariaService {
 	
 	public List<Veterinaria> buscarVetWhereJoin();
 	public List<Animal> buscarAnimWhereJoin();
+	
+	public List<Veterinaria> buscarVetFetchJoin();
 
 }

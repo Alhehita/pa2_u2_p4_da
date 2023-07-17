@@ -24,4 +24,8 @@ public interface AnimalService {
 	public int borrarAnimalPorN(String nombre);
 	
 	public int actualizarPorPeso(Double peso,  String nombre);
+	
+	
+	public List<Animal> buscarAnimFetchJoin();
+	
 }

@@ -60,4 +60,10 @@ public class AnimaleServiceImpl implements AnimalService {
 		return this.animalRepository.actualizarPorPeso(peso, nombre);
 	}
 
+	@Override
+	public List<Animal> buscarAnimFetchJoin() {
+		return this.animalRepository.seleccionarAnimFetchJoin();
+		
+	}
+
 }

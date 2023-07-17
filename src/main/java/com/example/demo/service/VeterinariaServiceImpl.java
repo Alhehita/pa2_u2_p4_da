@@ -85,4 +85,12 @@ public class VeterinariaServiceImpl implements VeterinariaService {
 		return this.veterinariaRepository.seleccionarAnimWhereJoin();
 	}
 
+	@Override
+	public List<Veterinaria> buscarVetFetchJoin() {
+		// TODO Auto-generated method stub
+		return this.veterinariaRepository.seleccionarVetFetchJoin();
+	}
+
+
+
 }

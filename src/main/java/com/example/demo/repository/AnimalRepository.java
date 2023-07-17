@@ -25,4 +25,7 @@ public interface AnimalRepository {
 
 	public int actualizarPorPeso(Double peso, String nombre);
 
+	
+	public List<Animal> seleccionarAnimFetchJoin();
+	
 }

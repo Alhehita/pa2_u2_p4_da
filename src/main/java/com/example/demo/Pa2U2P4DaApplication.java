@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.repository.modelo.Animal;
 import com.example.demo.repository.modelo.Veterinaria;
+import com.example.demo.service.AnimalService;
 import com.example.demo.service.EstudianteService;
 import com.example.demo.service.VeterinariaService;
 
@@ -16,8 +17,7 @@ import com.example.demo.service.VeterinariaService;
 public class Pa2U2P4DaApplication implements CommandLineRunner {
 
 	@Autowired
-	EstudianteService estudianteService;
-
+	AnimalService animalService;
 	@Autowired
 	VeterinariaService veterinariaService;
 
@@ -29,59 +29,68 @@ public class Pa2U2P4DaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
+		List<Veterinaria> vet1 = this.veterinariaService.buscarVetJoin();
+		List<Veterinaria> vet2 = this.veterinariaService.buscarVetRightJoin();
+		List<Veterinaria> vet3 = this.veterinariaService.buscarVetLeftJoin();
+		List<Veterinaria> vet4 = this.veterinariaService.buscarVetFullJoin();
+		List<Veterinaria> vet5 = this.veterinariaService.buscarVetWhereJoin();
+		List<Veterinaria> vet6 = this.veterinariaService.buscarVetFetchJoin();
+
+		for (Veterinaria vet10 : vet1) {
+			System.out.println(vet10);
+		}
+
+		for (Veterinaria vet10 : vet2) {
+			System.out.println(vet10);
+		}
+
+		for (Veterinaria vet10 : vet3) {
+			System.out.println(vet10);
+		}
+
+		for (Veterinaria vet10 : vet4) {
+			System.out.println(vet10);
+		}
+
+		for (Veterinaria vet10 : vet5) {
+			System.out.println(vet10);
+		}
+
+		for (Veterinaria vet10 : vet6) {
+			System.out.println(vet10);
+		}
+
+		List<Animal> anim1 = this.veterinariaService.buscarAnimJoin();
+		List<Animal> anim2 = this.veterinariaService.buscarAnimRightJoin();
+		List<Animal> anim3 = this.veterinariaService.buscarAnimLeftJoin();
+		List<Animal> anim4 = this.veterinariaService.buscarAnimFullJoin();
+		List<Animal> anim5 = this.veterinariaService.buscarAnimWhereJoin();
+
+		for (Animal anim10 : anim1) {
+			System.out.println(anim10);
+		}
+
+		for (Animal anim10 : anim2) {
+			System.out.println(anim10);
+		}
+
+		for (Animal anim10 : anim3) {
+			System.out.println(anim10);
+		}
+
+		for (Animal anim10 : anim4) {
+			System.out.println(anim10);
+		}
+
+		for (Animal anim10 : anim5) {
+			System.out.println(anim10);
+		}
 		
-	List<Veterinaria> vet1 = this.veterinariaService.buscarVetJoin();
-	List<Veterinaria> vet2 = this.veterinariaService.buscarVetRightJoin();
-	List<Veterinaria> vet3 = this.veterinariaService.buscarVetLeftJoin();
-	List<Veterinaria> vet4 = this.veterinariaService.buscarVetFullJoin();
-	List<Veterinaria> vet5 = this.veterinariaService.buscarVetWhereJoin();
+		List<Animal> anim6 = this.animalService.buscarAnimFetchJoin();
 
-	for(Veterinaria vet10 : vet1) {
-		System.out.println(vet10);
-	}
-	
-	for(Veterinaria vet10 : vet2) {
-		System.out.println(vet10);
-	}
-	
-	for(Veterinaria vet10 : vet3) {
-		System.out.println(vet10);
-	}
-	
-	for(Veterinaria vet10 : vet4) {
-		System.out.println(vet10);
-	}
-	
-	for(Veterinaria vet10 : vet5) {
-		System.out.println(vet10);
-	}
-	
-	List<Animal> anim1 = this.veterinariaService.buscarAnimJoin();
-	List<Animal> anim2 = this.veterinariaService.buscarAnimRightJoin();
-	List<Animal> anim3 = this.veterinariaService.buscarAnimLeftJoin();
-	List<Animal> anim4 = this.veterinariaService.buscarAnimFullJoin();
-	List<Animal> anim5 = this.veterinariaService.buscarAnimWhereJoin();
+		for (Animal anim10 : anim6) {
+			System.out.println(anim10);
+		}
 
-	for(Animal anim10 : anim1) {
-		System.out.println(anim10);
-	}
-	
-	for(Animal anim10 : anim2) {
-		System.out.println(anim10);
-	}
-	
-	for(Animal anim10 : anim3) {
-		System.out.println(anim10);
-	}
-	
-	for(Animal anim10 : anim4) {
-		System.out.println(anim10);
-	}
-	
-	for(Animal anim10 : anim5) {
-		System.out.println(anim10);
-	}
-	
-	
 	}
 }
